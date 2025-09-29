@@ -1,0 +1,102 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Previsão do Tempo</title>
+    <link rel="stylesheet" href="styles.css">
+    <!-- Leaflet CSS -->
+    <link rel="stylesheet" href="https://unpkg.com/leaflet@1.9.4/dist/leaflet.css" />
+</head>
+<body>
+    <div class="container">
+        <header>
+            <h1>🌤️ Previsão do Tempo</h1>
+            <p>Consulte a previsão do tempo para qualquer cidade do mundo</p>
+        </header>
+
+        <div class="search-container">
+            <div class="search-box">
+                <input type="text" id="city-input" placeholder="Digite o nome da cidade...">
+                <button id="search-btn">
+                    <span>🔍 Buscar</span>
+                </button>
+            </div>
+        </div>
+
+        <div id="loading" class="hidden">
+            <div class="spinner"></div>
+            <p>Buscando dados meteorológicos...</p>
+        </div>
+
+        <div id="error-message" class="hidden">
+            <p>❌ Não foi possível obter os dados da cidade.</p>
+        </div>
+
+        <div id="weather-container" class="hidden">
+            <div class="weather-card">
+                <div class="current-weather">
+                    <h2 id="city-name">Cidade, País</h2>
+                    <img id="weather-icon" src="" alt="Condição do tempo" class="hidden">
+                    <div class="temperature" id="temperature">--°C</div>
+                    <div class="description" id="weather-description">--</div>
+                </div>
+
+                <div class="weather-details">
+                    <div class="detail-item">
+                        <div class="detail-icon">🌡️</div>
+                        <div class="detail-info">
+                            <h3>Sensação Térmica</h3>
+                            <p id="feels-like">--°C</p>
+                        </div>
+                    </div>
+                    
+                    <div class="detail-item">
+                        <div class="detail-icon">💧</div>
+                        <div class="detail-info">
+                            <h3>Umidade</h3>
+                            <p id="humidity">--%</p>
+                        </div>
+                    </div>
+                    
+                    <div class="detail-item">
+                        <div class="detail-icon">💨</div>
+                        <div class="detail-info">
+                            <h3>Velocidade do Vento</h3>
+                            <p id="wind-speed">-- km/h</p>
+                        </div>
+                    </div>
+                    
+                    <div class="detail-item">
+                        <div class="detail-icon">📊</div>
+                        <div class="detail-info">
+                            <h3>Pressão Atmosférica</h3>
+                            <p id="pressure">-- hPa</p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Seção do Mapa -->
+            <div class="map-section">
+                <div class="section-header">
+                    <h3>📍 Localização no Mapa</h3>
+                    <p>Visualize a localização da cidade pesquisada</p>
+                </div>
+                <div id="map"></div>
+            </div>
+        </div>
+    </div>
+
+    <footer>
+        <div class="footer-content">
+            <p>Dados meteorológicos fornecidos por <a href="https://openweathermap.org" target="_blank">OpenWeatherMap</a></p>
+            <p>Mapas por <a href="https://openstreetmap.org" target="_blank">OpenStreetMap</a></p>
+        </div>
+    </footer>
+
+    <!-- Leaflet JavaScript -->
+    <script src="https://unpkg.com/leaflet@1.9.4/dist/leaflet.js"></script>
+    <script src="script.js"></script>
+</body>
+</html>
